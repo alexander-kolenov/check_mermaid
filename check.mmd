@@ -1,9 +1,83 @@
 
-graph TD
-  %% DB[База данных]
-  
-  a.s[Мысль]
-  B(идём за покупками)
-  
-  a.s -->|берём большую<br>сумку| B
-  
+graph  TD
+
+    %% data base
+    DB[(База данных)]
+    DB.device[(База устройств)]
+    
+    %% main
+    hdu[пуспс]
+    hdu.device[екрмрерммке]
+    
+    %% vwer
+    vwer[скемрукерс]
+    link.vwer([скеруерсу])
+    link.gevd([смуумсрек])
+    link.dgegs([сукмукермрк])
+
+    %% device
+    link.Device([скер укрс])
+    link.TCP[Демрскер умр]
+    TCP/GPRS([TCP/GPRS])
+    end_device(ксепмсуо)
+    
+    %% ods
+    con.ods[супмусп]
+    UI_Operator[скуп усп]
+    
+
+
+    subgraph vwer.subgraph[укпсуп]
+        link.vwer --> vwer
+        vwer --> link.gevd
+        link.dgegs --> vwer
+        vwer ==> DB.device
+    end
+    hdu.device --> |сукпсукп| link.vwer
+    link.gevd --> |супсупч| hdu
+    hdu.device --> |супксуч| link.dgegs
+
+
+
+    subgraph hdu.subgraph [ ]
+        hdu <==> hdu.device
+    end
+    hdu <-..-> DB
+    hdu.device <-..-> DB
+    con.ods <-..-> DB
+
+
+
+    subgraph device.subgraph[чупсупча]
+        link.Device <--> link.TCP
+        link.TCP <--> TCP/GPRS
+        TCP/GPRS <--> end_device
+    end
+    hdu.device o==x |мукпсчукчпей| link.Device
+
+
+
+    subgraph ods[ыпвп]
+        con.ods o==x |нчукпт| UI_Operator
+    end
+    hdu o==x |мкупк| con.ods
+
+
+    
+    %% style
+    style hdu fill:#aff,stroke-width:2px
+    style hdu.device fill:#faa,stroke-width:2px
+    style vwer fill:#faf,stroke-width:2px
+    style con.ods fill:#9ee,stroke-width:2px
+    style end_device fill:#afa,stroke-width:2px
+    style TCP/GPRS fill:#ffa
+
+
+
+    
+
+
+
+    
+
+
